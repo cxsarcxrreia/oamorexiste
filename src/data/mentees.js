@@ -1,6 +1,6 @@
 import mariaCaeiroImg from "../assets/Home/maria-caeiro.jpg";
-import carlaRosaImg from "../assets/Home/carla-rosa.jpg";
-import teresaFrancoImg from "../assets/Home/teresa-franco.jpg";
+import carlaRosaImg from "../assets/Home/carla-rosa-v2.png";
+import teresaFrancoImg from "../assets/Home/teresa-franco-v2.jpg";
 
 export const mentees = [
   {
@@ -22,7 +22,7 @@ export const mentees = [
       "Marketing para negócios em crescimento",
     ],
     certifications: [
-      "CCE ICF Continuing Coach Education",
+      "Re-imagine Leadership / Coaches Rising CCE ICF Continuing Coach Education USA.",
       "Formação para chefias e formadores de equipas",
       "Formação em vendas, stocks e gestão de encomendas",
     ],
@@ -36,6 +36,7 @@ export const mentees = [
     name: "Carla Rosa",
     category: "Estratégia Integrada",
     image: carlaRosaImg,
+    imageClassName: "scale-[1.06] group-hover:scale-[1.08]",
     intro:
       "Apoia líderes, equipas e profissionais técnicos que precisam de clareza, estrutura e decisões fundamentadas.",
     summary:

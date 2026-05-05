@@ -102,7 +102,7 @@ export default function AcademyMethodSection() {
   return (
     <section
       id="metodo"
-      className="px-6 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-14"
+      className="scroll-mt-28 px-6 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-14"
     >
       <div className="mx-auto w-full max-w-[1240px]">
         <div className="mx-auto max-w-[820px] text-center">

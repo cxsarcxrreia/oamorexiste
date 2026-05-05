@@ -59,7 +59,7 @@ export default function FounderTrustCard({
                     />
 
                     <div className="absolute left-4 top-4 rounded-full border border-white/65 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md">
-                    Founder & CEO
+                    Fundadora
                     </div>
                 </div>
                 </div>
@@ -68,7 +68,7 @@ export default function FounderTrustCard({
 
         <div className="flex flex-col px-1 pb-2 pt-1 sm:px-2 md:px-0 md:py-3">
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A38AAE]">
-            Founder & CEO
+            Fundadora
           </p>
 
           <h2 className="mt-3 text-[30px] font-medium leading-[1.02] text-[#222222] sm:text-[36px]">

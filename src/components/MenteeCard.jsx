@@ -23,7 +23,9 @@ export default function MenteeCard({ person }) {
         <img
           src={person.image}
           alt={person.name}
-          className="aspect-[4/4.8] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+          className={`aspect-[4/4.8] w-full object-cover transition duration-500 ${
+            person.imageClassName || "group-hover:scale-[1.02]"
+          }`}
         />
 
         <div className="absolute left-4 top-4 rounded-full border border-white/65 bg-white/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md">
@@ -106,7 +108,7 @@ export default function MenteeCard({ person }) {
           </div>
         )}
 
-        <div className="mt-7">
+        <div className="mt-auto pt-7">
           <a
             href="/#marcar-sessao"
             className="inline-flex min-h-[46px] items-center gap-2 rounded-full bg-[#3C083B] px-5 text-[13px] font-semibold text-white transition hover:opacity-95"

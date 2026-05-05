@@ -255,7 +255,7 @@ export default function HomeHeroParallax() {
             </h2>
 
             <p className="mt-2 text-[14px] text-white/90">
-              CEO de Pelcor. Fundadora de #oamorexiste. Screenwriter.
+              Fundadora da Pelcor. Criadora do #oamorexiste. Argumentista e realizadora.
             </p>
 
             <div

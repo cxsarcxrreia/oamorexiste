@@ -44,7 +44,7 @@ export default function AcademyHeroSection() {
           </p>
 
           <div className="mt-8 flex justify-center">
-            <MagicalButton label="Descobrir o Método" href="/mentorship" />
+            <MagicalButton label="Descobrir o Método" href="#metodo" />
           </div>
         </div>
       </div>

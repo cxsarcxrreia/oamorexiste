@@ -4,9 +4,9 @@ import logoSymbol from "../assets/Home/oamorexiste-logo.png";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 //import heroBackground from "../assets/Home/extended-sandra-w-logo.png";
-import teresaFrancoImg from "../assets/Home/teresa-franco.jpg";
+import teresaFrancoImg from "../assets/Home/teresa-franco-v2.jpg";
 import mariaCaeiroImg from "../assets/Home/maria-caeiro.jpg";
-import carlaRosaImg from "../assets/Home/carla-rosa.jpg";
+import carlaRosaImg from "../assets/Home/carla-rosa-v2.png";
 import sandraHeroImg from "../assets/Home/sandra-isabel.jpg";
 import FounderTrustCard from "../components/FounderTrustCard";
 import HomeTestimonialsCarousel from "../components/HomeTestimonialsCarousel";
@@ -120,7 +120,7 @@ const mentors = [
     name: "Carla Rosa",
     role: "BUSINESS EXPERT",
     description:
-      "Com mais de 20 anos de experiência em engenharia e consultoria sénior, fooca na otimização de processos e liderança ética. Especialista em estruturar sistemas complexos e decisões técnicas, traz o rigor necessário para equipas que procuram máxima eficiência operacional, segurança e clareza na gestão de sistemas integrados.",
+      "Com mais de 20 anos de experiência em engenharia e consultoria sénior, foca na otimização de processos e liderança ética. Especialista em estruturar sistemas complexos e decisões técnicas, traz o rigor necessário para equipas que procuram máxima eficiência operacional, segurança e clareza na gestão de sistemas integrados.",
     image: carlaRosaImg,
   },
 ];
@@ -196,15 +196,17 @@ function MentorCard({ mentor, reverse = false }) {
         reverse ? "md:grid-cols-[1fr_440px]" : "md:grid-cols-[440px_1fr]"
       }`}
     >
-      {!reverse && (
-        <div className="group overflow-hidden rounded-[18px] shadow-[0_18px_45px_rgba(110,30,140,0.16)] transition duration-300">
-          <img
-            src={mentor.image}
-            alt={mentor.name}
-            className="h-[420px] w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
-          />
-        </div>
-      )}
+      <div
+        className={`group overflow-hidden rounded-[18px] shadow-[0_18px_45px_rgba(110,30,140,0.16)] transition duration-300 ${
+          reverse ? "md:order-2" : ""
+        }`}
+      >
+        <img
+          src={mentor.image}
+          alt={mentor.name}
+          className="h-[420px] w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
+        />
+      </div>
 
       <div className={`${reverse ? "md:order-1" : ""}`}>
         <h3 className="text-[28px] font-medium leading-none text-[#242424] sm:text-[38px]">
@@ -226,23 +228,13 @@ function MentorCard({ mentor, reverse = false }) {
           Marca a tua sessão!
         </button>
 
-        <button
-          type="button"
+        <a
+          href="/mentees"
           className="ml-4 !inline-flex min-h-[38px] items-center !rounded-full !border !border-[#DFC6F0] !bg-[#FBF6FF] !px-4 !py-2 !text-[12px] font-bold leading-[1.25] text-[#6F3A81] shadow-[0_10px_24px_rgba(111,58,129,0.10)] transition-all duration-300 ease-out hover:scale-[1.02] hover:!border-[#D3AFE9] hover:!bg-[#F7EEFD] hover:text-[#5E2F73] hover:shadow-[0_14px_30px_rgba(111,58,129,0.14)]"
         >
           Saber Mais!
-        </button>
+        </a>
       </div>
-
-      {reverse && (
-        <div className="group overflow-hidden rounded-[18px] shadow-[0_18px_45px_rgba(110,30,140,0.16)] transition duration-300 md:order-2">
-          <img
-            src={mentor.image}
-            alt={mentor.name}
-            className="h-[420px] w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
-          />
-        </div>
-      )}
     </article>
   );
 }

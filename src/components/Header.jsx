@@ -46,7 +46,7 @@ export default function Header({ logoSrc }) {
         mobileActive: "text-white",
         divider: "border-white/12",
         burger:
-          "border-white/20 bg-white/8 text-white hover:bg-white/14",
+          "!border-white/12 !bg-[#24142F] !text-white shadow-[0_12px_28px_rgba(24,8,34,0.22)] hover:!bg-[#2F1A3A]",
       };
     }
 
@@ -66,19 +66,46 @@ export default function Header({ logoSrc }) {
       mobileActive: "text-[#111111]",
       divider: "border-[#EFE4F6]",
       burger:
-        "border-[#E5D2F2] bg-white/80 text-[#3C083B] hover:bg-[#FBF6FF]",
+        "!border-[#3C083B]/10 !bg-[#24142F] !text-white shadow-[0_12px_28px_rgba(24,8,34,0.18)] hover:!bg-[#2F1A3A]",
     };
   }, [isHomePage]);
 
   const primaryNavItems = navItems.filter((item) => !item.highlight);
   const ctaItem = navItems.find((item) => item.highlight);
+  const activeTheme = mobileOpen
+    ? {
+        ...theme,
+        shell:
+          "border-white/10 bg-[#24142F]/95 backdrop-blur-2xl shadow-[0_22px_55px_rgba(24,8,34,0.24)]",
+        logoText: "text-white",
+        buttonGhost:
+          "border-white/10 bg-white/10 text-white hover:bg-white/16",
+        buttonPrimary:
+          "bg-white text-[#2B1832] hover:bg-[#F7F1FB]",
+        mobilePanel:
+          "border-white/10 bg-[#2F1A3A] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
+        mobileLink: "text-white/78 hover:text-white",
+        mobileActive: "text-white",
+        burger:
+          "!border-white/10 !bg-[#24142F] !text-white hover:!bg-[#2F1A3A]",
+      }
+    : theme;
 
   return (
     <>
+      {mobileOpen && (
+        <button
+          type="button"
+          aria-label="Fechar menu"
+          onClick={() => setMobileOpen(false)}
+          className="fixed inset-0 z-40 bg-white/5 backdrop-blur-md lg:hidden"
+        />
+      )}
+
       <header className="absolute inset-x-0 top-0 z-50">
         <div className="mx-auto max-w-[1440px] px-4 pt-4 sm:px-6 sm:pt-5 lg:px-10">
           <div
-            className={`relative rounded-[30px] border transition-[box-shadow,background-color,border-color] duration-300 sm:rounded-[34px] lg:rounded-full ${theme.shell}`}
+            className={`relative rounded-[30px] border transition-[box-shadow,background-color,border-color] duration-300 sm:rounded-[34px] lg:rounded-full ${activeTheme.shell}`}
           >
             <div className="flex min-h-[74px] items-center justify-between px-4 sm:px-6 lg:min-h-[80px] lg:px-8">
               <Link
@@ -92,7 +119,7 @@ export default function Header({ logoSrc }) {
                   className="h-[40px] w-[40px] object-contain sm:h-[44px] sm:w-[44px]"
                 />
                 <span
-                  className={`whitespace-nowrap text-[16px] font-semibold tracking-[-0.02em] sm:text-[19px] ${theme.logoText}`}
+                  className={`whitespace-nowrap text-[16px] font-semibold tracking-[-0.02em] sm:text-[19px] ${activeTheme.logoText}`}
                 >
                   #oamorexiste🌹
                 </span>
@@ -109,8 +136,8 @@ export default function Header({ logoSrc }) {
                           className={({ isActive }) =>
                             `relative inline-flex items-center text-[15px] leading-none transition-colors duration-300 ${
                               isActive
-                                ? `${theme.activeText} font-bold`
-                                : `${theme.navText} font-semibold`
+                                ? `${activeTheme.activeText} font-bold`
+                                : `${activeTheme.navText} font-semibold`
                             }`
                           }
                         >
@@ -138,8 +165,8 @@ export default function Header({ logoSrc }) {
                     className={({ isActive }) =>
                       `inline-flex h-[42px] w-[180px] shrink-0 items-center justify-center rounded-full px-5 text-center text-[14px] font-semibold whitespace-nowrap transition-all duration-300 ${
                         isActive
-                          ? `${theme.buttonPrimary} scale-[1.02] shadow-[0_16px_34px_rgba(111,58,129,0.20)] font-bold`
-                          : `${theme.buttonGhost}`
+                          ? `${activeTheme.buttonPrimary} scale-[1.02] shadow-[0_16px_34px_rgba(111,58,129,0.20)] font-bold`
+                          : `${activeTheme.buttonGhost}`
                       }`
                     }
                   >
@@ -155,7 +182,7 @@ export default function Header({ logoSrc }) {
                   aria-expanded={mobileOpen ? "true" : "false"}
                   aria-controls="mobile-header-dropdown"
                   aria-label="Abrir menu"
-                  className={`inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 ${theme.burger}`}
+                  className={`inline-flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 ${activeTheme.burger}`}
                 >
                   <svg
                     className="h-5 w-5"
@@ -203,7 +230,7 @@ export default function Header({ logoSrc }) {
                   : "max-h-0 opacity-0 px-0 pb-0 pt-0"
               }`}
             >
-              <div className={`mx-3 mt-2 rounded-[26px] border ${theme.mobilePanel}`}>
+              <div className={`mx-3 mt-2 rounded-[26px] border ${activeTheme.mobilePanel}`}>
                 <div className="px-4 py-3">
                   <nav>
                     <ul className="space-y-1.5">
@@ -215,8 +242,8 @@ export default function Header({ logoSrc }) {
                               className={({ isActive }) =>
                                 `mt-2 inline-flex min-h-[46px] w-full items-center justify-center rounded-full px-5 text-[14px] transition-all duration-300 ${
                                   isActive
-                                    ? `${theme.buttonPrimary} font-bold shadow-[0_16px_34px_rgba(111,58,129,0.20)]`
-                                    : `${theme.buttonGhost} font-semibold`
+                                    ? `${activeTheme.buttonPrimary} font-bold shadow-[0_16px_34px_rgba(111,58,129,0.20)]`
+                                    : `${activeTheme.buttonGhost} font-semibold`
                                 }`
                               }
                             >
@@ -229,8 +256,8 @@ export default function Header({ logoSrc }) {
                               className={({ isActive }) =>
                                 `flex items-center justify-between rounded-[18px] px-3 py-3 text-[15px] transition-colors duration-300 ${
                                   isActive
-                                    ? `${theme.mobileActive} font-bold`
-                                    : `${theme.mobileLink} font-semibold`
+                                    ? `${activeTheme.mobileActive} font-bold`
+                                    : `${activeTheme.mobileLink} font-semibold`
                                 }`
                               }
                             >
@@ -240,7 +267,7 @@ export default function Header({ logoSrc }) {
                                   <span
                                     className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
                                       isActive
-                                        ? isHomePage
+                                        ? mobileOpen || isHomePage
                                           ? "bg-white"
                                           : "bg-[#D47BFF]"
                                         : "bg-transparent"
@@ -259,15 +286,6 @@ export default function Header({ logoSrc }) {
             </div>
           </div>
         </div>
-
-        {mobileOpen && (
-          <button
-            type="button"
-            aria-label="Fechar menu"
-            onClick={() => setMobileOpen(false)}
-            className="fixed inset-0 -z-10 bg-black/10 lg:hidden"
-          />
-        )}
       </header>
     </>
   );
