@@ -1,40 +1,5 @@
 import React from "react";
-
-const mentorshipTiers = [
-  {
-    id: 1,
-    name: "One-to-One",
-    subtitle: "Sessão individual",
-    duration: "1h",
-    price: "60€",
-    description:
-      "Um formato direto e focado para trabalhar clareza, direção e próximos passos com acompanhamento individual.",
-    cta: "Escolher sessão",
-    featured: false,
-  },
-  {
-    id: 2,
-    name: "Estratégica One-to-One",
-    subtitle: "Sessão premium",
-    duration: "1h30",
-    price: "70€",
-    description:
-      "Uma sessão mais profunda para desbloquear decisões, alinhar estratégia e trabalhar desafios com maior profundidade.",
-    cta: "Escolher sessão",
-    featured: true,
-  },
-  {
-    id: 3,
-    name: "Grupo",
-    subtitle: "Sessão coletiva",
-    duration: "2h",
-    price: "Sob Orçamento",
-    description:
-      "Formato pensado para equipas, grupos e contextos colaborativos que pedem alinhamento, facilitação e visão partilhada.",
-    cta: "Pedir proposta",
-    featured: false,
-  },
-];
+import { bookingPlans as mentorshipTiers, buildBookingPath } from "../config/booking";
 
 function TierCard({ item }) {
   const inner = (
@@ -95,7 +60,10 @@ function TierCard({ item }) {
 
         <div className="mt-auto pt-8">
           <a
-            href="/#marcar-sessao"
+            href={buildBookingPath({
+              planSlug: item.slug,
+              source: "mentorship-tier",
+            })}
             className={`inline-flex min-h-[48px] items-center justify-center rounded-full px-5 text-[14px] font-semibold transition ${
               item.featured
                 ? "bg-[#2E0D3B] text-white shadow-[0_12px_30px_rgba(60,8,59,0.22)] hover:opacity-95"
@@ -147,7 +115,7 @@ export default function MentorshipTiersSection() {
 
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 lg:mt-16">
           {mentorshipTiers.map((item) => (
-            <TierCard key={item.id} item={item} />
+            <TierCard key={item.slug} item={item} />
           ))}
         </div>
       </div>

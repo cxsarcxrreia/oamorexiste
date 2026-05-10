@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import MenteeCard from "../components/MenteeCard";
 import { mentees } from "../data/mentees";
 import logoSymbol from "../assets/Home/oamorexiste-logo.png";
+import { buildBookingPath } from "../config/booking";
 
 function SoftBadge({ children }) {
   return (
@@ -83,7 +84,7 @@ export default function MenteesPage() {
 
               <div className="mt-7 lg:mt-0 lg:pl-8">
                 <a
-                  href="/#marcar-sessao"
+                  href={buildBookingPath({ source: "mentees-next-step" })}
                   className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#3C083B] px-7 text-[15px] font-semibold text-white transition hover:opacity-95"
                 >
                   Marca a tua sessão!

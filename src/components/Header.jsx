@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { BOOKING_ROUTE } from "../config/booking";
 
 const navItems = [
   { label: "Home", to: "/" },
   { label: "A Academia", to: "/academy" },
   { label: "Mentores", to: "/mentees" },
   { label: "Testemunhos", to: "/testimonials" },
-  { label: "Marca a tua Sessão", to: "/mentorship", highlight: true },
+  { label: "Marca a tua Sessão", to: BOOKING_ROUTE, highlight: true },
 ];
 
 export default function Header({ logoSrc }) {

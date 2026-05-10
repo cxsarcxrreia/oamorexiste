@@ -12,6 +12,7 @@ import FounderTrustCard from "../components/FounderTrustCard";
 import HomeTestimonialsCarousel from "../components/HomeTestimonialsCarousel";
 import HomeHeroParallax from "../components/HomeHeroParallax";
 import LaurelIcon from "../assets/Home/pink-award-sign.png";
+import { buildBookingPath } from "../config/booking";
 
 const testimonials = [
   {
@@ -101,6 +102,7 @@ const testimonials = [
 const mentors = [
   {
     id: 1,
+    slug: "teresa-franco",
     name: "Teresa Franco",
     role: "BUSINESS EXPERT",
     description:
@@ -109,6 +111,7 @@ const mentors = [
   },
   {
     id: 2,
+    slug: "maria-caeiro",
     name: "Maria Caeiro",
     role: "BUSINESS EXPERT",
     description:
@@ -117,6 +120,7 @@ const mentors = [
   },
   {
     id: 3,
+    slug: "carla-rosa",
     name: "Carla Rosa",
     role: "BUSINESS EXPERT",
     description:
@@ -221,12 +225,15 @@ function MentorCard({ mentor, reverse = false }) {
           {mentor.description}
         </p>
 
-        <button
-          type="button"
+        <a
+          href={buildBookingPath({
+            mentorSlug: mentor.slug,
+            source: "home-mentor-card",
+          })}
           className="mt-6 !inline-flex min-h-[38px] items-center !justify-center !rounded-full !bg-[#3C083B] px-5 !text-[12px] font-semibold text-white shadow-[0_18px_45px_rgba(110,30,140,0.16)] transition-all duration-300 ease-out hover:scale-[1.02] hover:!bg-[#511051] hover:shadow-[0_22px_50px_rgba(110,30,140,0.22)]"
         >
           Marca a tua sessão!
-        </button>
+        </a>
 
         <a
           href="/mentees"
