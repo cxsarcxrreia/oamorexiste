@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import logoSymbol from "../assets/Home/oamorexiste-logo.png";
 import LaurelIcon from "../assets/Home/pink-award-sign.png";
 import { useEffect } from "react";
+import { buildBookingPath } from "../config/booking";
 
 function StarRow() {
   return (
@@ -222,7 +223,7 @@ export default function TestimonialsPage() {
 
                 <div className="relative z-10 mt-7 lg:mt-0 lg:pl-8">
                     <a
-                    href="/#marcar-sessao"
+                    href={buildBookingPath({ source: "testimonials-next-step" })}
                     className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#3C083B] px-7 text-[15px] font-semibold text-white transition hover:opacity-95"
                     >
                     Marca a tua sessão!

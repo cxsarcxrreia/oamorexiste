@@ -5,6 +5,7 @@ import MenteesPage from "./pages/MenteesPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import AcademyPage from "./pages/AcademyPage";
 import MentorshipPage from "./pages/MentorshipPage";
+import BookMentorPage from "./pages/BookMentorPage";
 
 export default function App() {
   return (
@@ -15,6 +16,8 @@ export default function App() {
         <Route path="/testimonials" element={<TestimonialsPage />} />
         <Route path="/academy" element={<AcademyPage />} />
         <Route path="/mentorship" element={<MentorshipPage />} />
+        <Route path="/selecionar-mentora" element={<BookMentorPage />} />
+        <Route path="/book" element={<BookMentorPage />} />
       </Routes>
     </BrowserRouter>
   );

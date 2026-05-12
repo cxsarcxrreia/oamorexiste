@@ -1,4 +1,5 @@
 import React from "react";
+import { buildBookingPath } from "../config/booking";
 
 function ArrowIcon() {
   return (
@@ -110,7 +111,10 @@ export default function MenteeCard({ person }) {
 
         <div className="mt-auto pt-7">
           <a
-            href="/#marcar-sessao"
+            href={buildBookingPath({
+              mentorSlug: person.slug,
+              source: "mentor-directory",
+            })}
             className="inline-flex min-h-[46px] items-center gap-2 rounded-full bg-[#3C083B] px-5 text-[13px] font-semibold text-white transition hover:opacity-95"
           >
             Marcar sessão

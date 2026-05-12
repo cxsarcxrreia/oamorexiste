@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
+import { BOOKING_ROUTE } from "../config/booking";
 
 const navItems = [
   { label: "Os nossos mentores", href: "/mentees" },
-  { label: "Marcar a sua sessão", href: "/mentory" },
-  { label: "Testemunhos", href: "/testemonials" },
+  { label: "Marcar a sua sessão", href: BOOKING_ROUTE },
+  { label: "Testemunhos", href: "/testimonials" },
   { label: "A Academia", href: "/academy" },
 
 ];
