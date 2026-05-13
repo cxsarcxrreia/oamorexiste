@@ -2,6 +2,8 @@ import React from "react";
 import { bookingPlans as mentorshipTiers, buildBookingPath } from "../config/booking";
 
 function TierCard({ item }) {
+  const showDuration = item.slug !== "grupo";
+
   const inner = (
     <div
       className={`relative h-full overflow-hidden rounded-[26px] px-6 pb-6 pt-6 shadow-[0_18px_45px_rgba(110,30,140,0.16)] transition duration-300 hover:-translate-y-2 ${
@@ -35,14 +37,18 @@ function TierCard({ item }) {
         </div>
 
         <div className="mt-8 flex items-end justify-between gap-5">
-          <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-[#9B8AA5]">
-              Duração
-            </p>
-            <p className="mt-2 text-[42px] font-semibold leading-none text-[#241A2A] sm:text-[48px]">
-              {item.duration}
-            </p>
-          </div>
+          {showDuration ? (
+            <div>
+              <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-[#9B8AA5]">
+                Duração
+              </p>
+              <p className="mt-2 text-[42px] font-semibold leading-none text-[#241A2A] sm:text-[48px]">
+                {item.duration}
+              </p>
+            </div>
+          ) : (
+            <div aria-hidden="true" />
+          )}
 
           <div className="text-right">
             <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-[#9B8AA5]">

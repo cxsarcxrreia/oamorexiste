@@ -1,8 +1,17 @@
 import mariaCaeiroImg from "../assets/Home/maria-caeiro.jpg";
 import carlaRosaImg from "../assets/Home/carla-rosa-v2.png";
 import teresaFrancoImg from "../assets/Home/teresa-franco-v2.jpg";
+import logoSymbol from "../assets/Home/oamorexiste-logo.png";
 
 export const BOOKING_ROUTE = "/selecionar-mentora";
+const TEST_MENTOR_SLUG = "test-ranger-cardeal";
+
+function shouldShowTestMentor() {
+  if (import.meta.env.VITE_ENABLE_TEST_MENTOR === "true") return true;
+  if (typeof window === "undefined") return false;
+
+  return ["localhost", "127.0.0.1"].includes(window.location.hostname);
+}
 
 export const bookingPlans = [
   {
@@ -41,7 +50,7 @@ export const bookingPlans = [
   },
 ];
 
-export const bookingMentors = [
+const realBookingMentors = [
   {
     slug: "teresa-franco",
     name: "Teresa Franco",
@@ -68,6 +77,35 @@ export const bookingMentors = [
     email: "carlamcrrosa@gmail.com",
   },
 ];
+
+const testBookingMentor = {
+  slug: TEST_MENTOR_SLUG,
+  name: "Ranger Cardeal",
+  category: "Mentora de Teste - desenvolvimento",
+  image: logoSymbol,
+  imageClassName: "object-contain p-10",
+  calendlyUrl: "https://calendly.com/ranger-cardeal/30min",
+  email: "rangercardeal@gmail.com",
+  isTest: true,
+};
+
+const testSandraBookingMentor = {
+  slug: "test-sandra-correia",
+  name: "Sandra",
+  category: "Mentora de Teste - desenvolvimento",
+  image: logoSymbol,
+  imageClassName: "object-contain p-10",
+  calendlyUrl: "https://calendly.com/correia451/30min",
+  email: "correia451@gmail.com",
+  isTest: true,
+};
+
+const testBookingMentors = [testBookingMentor, testSandraBookingMentor];
+
+// Development-only test mentors. Remove this block before production if no longer needed.
+export const bookingMentors = shouldShowTestMentor()
+  ? [...realBookingMentors, ...testBookingMentors]
+  : realBookingMentors;
 
 export function getBookingMentorBySlug(slug) {
   return bookingMentors.find((mentor) => mentor.slug === slug) || null;

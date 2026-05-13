@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import backgroundOnly from "../assets/Home/hero-elements/background-only.png";
 import logoOnly from "../assets/Home/hero-elements/logo-only.png";
 import characterOnly from "../assets/Home/hero-elements/character-only.png";
-import { buildBookingPath } from "../config/booking";
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
@@ -73,7 +72,6 @@ export default function HomeHeroParallax() {
 
   useEffect(() => {
     if (reduceMotion) {
-      setProgress(0);
       return;
     }
 
@@ -270,10 +268,10 @@ export default function HomeHeroParallax() {
             </div>
 
             <a
-                href={buildBookingPath({ source: "home-hero" })}
+                href="/mentees"
                 className="group relative mt-8 inline-flex min-h-[54px] items-center justify-center overflow-hidden rounded-full px-8 tracking-[-0.01em] text-[22px] font-medium !rounded-full border- !border-[#DFC6F0] bg-gradient-to-r from-[#D47BFF] to-[#ff0080] leading-[1.25] text-[#FBF6FF] shadow-[0_10px_24px_rgba(111,58,129,0.10)] transition-all duration-300 ease-out hover:scale-[1.02] hover:!border-[#D3AFE9] hover:bg-gradient-to-r hover:from-[#F7EEFD] hover:to-[#E7C4F5] hover:text-[#5E2F73] hover:shadow-[0_14px_30px_rgba(111,58,129,0.14)]"
                 >
-                <span className="relative z-10">Marca a tua sessão!</span>
+                <span className="relative z-10">Explorar Mentorias</span>
                 </a>
           </div>
         </div>

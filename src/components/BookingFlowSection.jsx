@@ -5,8 +5,6 @@ import {
   Calendar,
   CreditCard,
   CheckCircle,
-  Video,
-  ShieldCheck,
 } from "lucide-react";
 import googleMeetLogo from "../assets/Home/google-meets-logo.png";
 import calendlyLogo from "../assets/Home/calendly-logo.png";
@@ -44,24 +42,6 @@ const bookingSteps = [
   },
 ];
 
-const logisticsIcons = [
-  {
-    id: 1,
-    label: "Google Meet",
-    Icon: Video,
-  },
-  {
-    id: 2,
-    label: "Calendly",
-    Icon: Calendar,
-  },
-  {
-    id: 3,
-    label: "Confiança",
-    Icon: ShieldCheck,
-  },
-];
-
 function StepNumberPill({ number }) {
   return (
     <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/70 bg-white/55 text-[14px] font-semibold text-[#6F3A81] shadow-[0_10px_24px_rgba(111,58,129,0.10)] backdrop-blur-sm">
@@ -90,24 +70,6 @@ function StepCard({ step }) {
       <p className="mt-3 max-w-[220px] text-[14px] leading-[1.7] text-[#666666]">
         {step.description}
       </p>
-    </div>
-  );
-}
-
-function LogisticsVisualPill({ item }) {
-  const Icon = item.Icon;
-
-  return (
-    <div className="group relative inline-flex items-center gap-3 rounded-full p-[1.5px] shadow-[0_12px_28px_rgba(111,58,129,0.10)] transition duration-300 hover:-translate-y-1 hover:scale-[1.03]">
-      <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ffb6f9]/70 via-[#d98cff]/70 to-[#8ee7ff]/70" />
-      <span className="relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/70 bg-white/20 px-4 py-3 backdrop-blur-sm">
-        <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.34)_0%,rgba(255,255,255,0.10)_36%,rgba(255,255,255,0.03)_100%)]" />
-        <span className="absolute left-[10%] top-[12%] h-[42%] w-[34%] rounded-full bg-white/20 blur-lg" />
-        <Icon className="relative z-10 h-5 w-5 text-[#6F3A81]" strokeWidth={2} />
-        <span className="relative z-10 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#6F3A81]">
-          {item.label}
-        </span>
-      </span>
     </div>
   );
 }

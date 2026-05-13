@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import logoSymbol from "../assets/Home/oamorexiste-logo.png";
 import LaurelIcon from "../assets/Home/pink-award-sign.png";
-import { useEffect } from "react";
 import { buildBookingPath } from "../config/booking";
 
 function StarRow() {

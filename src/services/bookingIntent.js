@@ -1,6 +1,12 @@
 const STORAGE_KEY = "oamorexiste.bookingIntent";
 
-export function buildMentorBookingIntentPayload({ mentor, plan, source } = {}) {
+export function buildMentorBookingIntentPayload({
+  mentor,
+  plan,
+  client,
+  calendly,
+  source,
+} = {}) {
   return {
     mentorSlug: mentor?.slug || "",
     mentorName: mentor?.name || "",
@@ -9,6 +15,10 @@ export function buildMentorBookingIntentPayload({ mentor, plan, source } = {}) {
     planName: plan?.name || "",
     planDuration: plan?.duration || "",
     planPrice: plan?.price || "",
+    clientName: client?.name || "",
+    clientEmail: client?.email || "",
+    calendlyEventUri: calendly?.eventUri || "",
+    calendlyInviteeUri: calendly?.inviteeUri || "",
     source: source || "booking-flow",
     createdAt: new Date().toISOString(),
   };
@@ -36,14 +46,56 @@ export function getStoredBookingIntent() {
   }
 }
 
-export async function notifyMentorOfBookingIntent(payload) {
-  // TODO: replace this mock adapter with a backend, serverless function, or
-  // protected third-party email service. Do not send real email from the client
-  // because client-side credentials would be exposed in the static bundle.
-  console.info("Mock mentor booking intent notification:", payload);
+export function clearStoredBookingIntent() {
+  if (typeof window === "undefined") return;
 
-  return {
-    ok: true,
-    mode: "mock",
-  };
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.warn("Booking intent could not be cleared locally.", error);
+  }
+}
+
+export async function notifyMentorOfBookingIntent(payload) {
+  const response = await fetch("/api/booking-intent", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const result = await response
+    .json()
+    .catch(() => ({ ok: false, error: "Resposta inesperada do servidor." }));
+
+  if (!response.ok || !result.ok) {
+    throw new Error(
+      result.error || "Não foi possível enviar os emails de confirmação.",
+    );
+  }
+
+  return result;
+}
+
+export async function notifyGroupMentorshipRequest(payload) {
+  const response = await fetch("/api/group-mentorship-request", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const result = await response
+    .json()
+    .catch(() => ({ ok: false, error: "Resposta inesperada do servidor." }));
+
+  if (!response.ok || !result.ok) {
+    throw new Error(
+      result.error || "Não foi possível enviar o pedido de grupo.",
+    );
+  }
+
+  return result;
 }

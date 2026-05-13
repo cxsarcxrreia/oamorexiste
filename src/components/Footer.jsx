@@ -36,6 +36,29 @@ export default function Footer({ logoSrc, onCookieSettingsClick }) {
             <p className="mt-5 text-[18px] font-medium text-[#202020]">
               © {year} #oamorexiste🌹
             </p>
+
+            <a
+              href="https://www.instagram.com/academiaoamorexiste"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram Academia O Amor Existe"
+              className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#D9D9D9] bg-transparent text-black transition hover:border-black hover:bg-white"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
           </div>
 
           <div className="flex items-end lg:justify-end">

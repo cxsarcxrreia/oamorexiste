@@ -44,6 +44,7 @@ export default function FounderTrustCard({
   person,
   ctaLabel = "Saber Mais",
   ctaHref = "/bio",
+  showCta = false,
 }) {
   return (
     <article className="rounded-[24px]">
@@ -99,15 +100,17 @@ export default function FounderTrustCard({
             </div>
           </div>
 
-          <div className="mt-7">
-            <a
-              href={ctaHref}
-              className="inline-flex min-h-[46px] items-center gap-2 rounded-full bg-[#3C083B] px-5 text-[13px] font-semibold text-white shadow-[0_14px_30px_rgba(60,8,59,0.22)] transition hover:opacity-95"
-            >
-              {ctaLabel}
-              <ArrowIcon />
-            </a>
-          </div>
+          {showCta && (
+            <div className="mt-7">
+              <a
+                href={ctaHref}
+                className="inline-flex min-h-[46px] items-center gap-2 rounded-full bg-[#3C083B] px-5 text-[13px] font-semibold text-white shadow-[0_14px_30px_rgba(60,8,59,0.22)] transition hover:opacity-95"
+              >
+                {ctaLabel}
+                <ArrowIcon />
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </article>

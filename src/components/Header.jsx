@@ -17,7 +17,8 @@ export default function Header({ logoSrc }) {
   const isHomePage = location.pathname === "/";
 
   useEffect(() => {
-    setMobileOpen(false);
+    const closeMenu = window.setTimeout(() => setMobileOpen(false), 0);
+    return () => window.clearTimeout(closeMenu);
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
