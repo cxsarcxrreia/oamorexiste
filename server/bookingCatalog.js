@@ -28,21 +28,21 @@ const realBookingMentors = [
     name: "Teresa Franco",
     category: "Mentoria Administrativa e Financeira",
     calendlyUrl: "https://calendly.com/teresasfranco785/30min",
-    email: "teresasfranco785@gmail.com",
+    email: "teresa.franco@oamorexiste.com",
   },
   {
     slug: "maria-caeiro",
     name: "Maria Caeiro",
     category: "Liderança Humanizada e Desenvolvimento de Equipas",
     calendlyUrl: "https://calendly.com/mfcaeiro/30min",
-    email: "mfcaeiro@gmail.com",
+    email: "maria.caeiro@oamorexiste.com",
   },
   {
     slug: "carla-rosa",
     name: "Carla Rosa",
     category: "Estratégia Integrada",
     calendlyUrl: "https://calendly.com/carlamcrrosa/30min",
-    email: "carlamcrrosa@gmail.com",
+    email: "carla.rosa@oamorexiste.com",
   },
 ];
 

@@ -57,7 +57,7 @@ const realBookingMentors = [
     category: "Mentoria Administrativa e Financeira",
     image: teresaFrancoImg,
     calendlyUrl: "https://calendly.com/teresasfranco785/30min",
-    email: "teresasfranco785@gmail.com",
+    email: "teresa.franco@oamorexiste.com",
   },
   {
     slug: "maria-caeiro",
@@ -65,7 +65,7 @@ const realBookingMentors = [
     category: "Liderança Humanizada e Desenvolvimento de Equipas",
     image: mariaCaeiroImg,
     calendlyUrl: "https://calendly.com/mfcaeiro/30min",
-    email: "mfcaeiro@gmail.com",
+    email: "maria.caeiro@oamorexiste.com",
   },
   {
     slug: "carla-rosa",
@@ -74,7 +74,7 @@ const realBookingMentors = [
     image: carlaRosaImg,
     imageClassName: "scale-[1.06]",
     calendlyUrl: "https://calendly.com/carlamcrrosa/30min",
-    email: "carlamcrrosa@gmail.com",
+    email: "carla.rosa@oamorexiste.com",
   },
 ];
 
