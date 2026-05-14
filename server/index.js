@@ -111,52 +111,65 @@ function buildEmailBodies({ mentor, plan, client }) {
     .join("");
 
   const mentorText = [
-    `Nova sessão pedida: ${plan.name}`,
+    `Pedido de sessão recebido - pendente de pagamento: ${plan.name}`,
     "",
     ...lines,
     "",
+    "Este pedido ainda não está confirmado.",
     "Agora a mentora fica responsável por enviar o link de pagamento manualmente.",
     "A sessão só deve ser considerada confirmada depois do pagamento estar concluído.",
   ].join("\n");
 
   const mentorHtml = `
-    <h2>Nova sessão pedida: ${escapeHtml(plan.name)}</h2>
+    <h2>Pedido de sessão recebido - pendente de pagamento: ${escapeHtml(plan.name)}</h2>
     ${htmlRows}
+    <p><strong>Estado:</strong> pedido recebido, ainda não confirmado.</p>
     <p><strong>Próximo passo:</strong> enviar manualmente o link de pagamento à cliente.</p>
     <p>A sessão só deve ser considerada confirmada depois do pagamento estar concluído.</p>
   `;
 
   const archiveText = [
-    `A mentora ${mentor.name} foi solicitada para uma sessão ${plan.name} e fica responsável por enviar o link de pagamento.`,
+    `Pedido de mentoria pendente de pagamento: ${mentor.name} - ${plan.name}.`,
+    `A mentora ${mentor.name} fica responsável por enviar o link de pagamento.`,
+    "A sessão só deve ser considerada confirmada depois do pagamento estar concluído.",
     "",
     ...lines,
   ].join("\n");
 
   const archiveHtml = `
-    <h2>Pedido de mentoria registado</h2>
-    <p>A mentora <strong>${escapeHtml(mentor.name)}</strong> foi solicitada para uma sessão <strong>${escapeHtml(plan.name)}</strong> e fica responsável por enviar o link de pagamento.</p>
+    <h2>Pedido de mentoria pendente de pagamento</h2>
+    <p>A mentora <strong>${escapeHtml(mentor.name)}</strong> foi solicitada para uma sessão <strong>${escapeHtml(plan.name)}</strong>.</p>
+    <p><strong>Estado:</strong> pedido recebido, ainda não confirmado.</p>
+    <p><strong>Próximo passo:</strong> a mentora deve enviar manualmente o link de pagamento.</p>
+    <p>A sessão só deve ser considerada confirmada depois do pagamento estar concluído.</p>
     ${htmlRows}
   `;
 
   const clientText = [
-    "A tua reserva foi recebida.",
+    "Recebemos o teu pedido de sessão.",
+    "",
+    "A tua sessão ainda não está confirmada.",
     "",
     `Mentora: ${mentor.name}`,
     `Formato: ${plan.name}`,
     "",
     "A mentora vai enviar-te o link de pagamento por email.",
-    "A sessão fica confirmada apenas depois do pagamento estar concluído.",
+    "Só depois do pagamento estar concluído é que a sessão fica confirmada.",
+    "",
+    "Se receberes um email automático do Calendly, considera-o apenas como a pré-reserva do horário. A confirmação final depende do pagamento.",
     "",
     "Obrigada,",
     "Oamorexiste",
   ].join("\n");
 
   const clientHtml = `
-    <h2>A tua reserva foi recebida.</h2>
+    <h2>Recebemos o teu pedido de sessão.</h2>
+    <p><strong>A tua sessão ainda não está confirmada.</strong></p>
     <p><strong>Mentora:</strong> ${escapeHtml(mentor.name)}</p>
     <p><strong>Formato:</strong> ${escapeHtml(plan.name)}</p>
     <p>A mentora vai enviar-te o link de pagamento por email.</p>
-    <p>A sessão fica confirmada apenas depois do pagamento estar concluído.</p>
+    <p>Só depois do pagamento estar concluído é que a sessão fica confirmada.</p>
+    <p>Se receberes um email automático do Calendly, considera-o apenas como a pré-reserva do horário. A confirmação final depende do pagamento.</p>
     <p>Obrigada,<br />Oamorexiste</p>
   `;
 
@@ -371,7 +384,7 @@ app.post("/api/booking-intent", rateLimitBookingRequests, async (request, respon
       from: emailFrom,
       to: mentor.email,
       replyTo: client.email,
-      subject: `Nova sessão pedida: ${plan.name} - ${client.name}`,
+      subject: `Pedido de sessão pendente de pagamento: ${plan.name} - ${client.name}`,
       text: bodies.mentorText,
       html: bodies.mentorHtml,
     });
@@ -380,7 +393,7 @@ app.post("/api/booking-intent", rateLimitBookingRequests, async (request, respon
       from: emailFrom,
       to: archiveEmail,
       replyTo: mentor.email,
-      subject: `Pedido de mentoria: ${mentor.name} - ${plan.name}`,
+      subject: `Pedido de mentoria pendente de pagamento: ${mentor.name} - ${plan.name}`,
       text: bodies.archiveText,
       html: bodies.archiveHtml,
     });
@@ -389,7 +402,7 @@ app.post("/api/booking-intent", rateLimitBookingRequests, async (request, respon
       from: emailFrom,
       to: client.email,
       replyTo: mentor.email,
-      subject: "A tua reserva foi recebida",
+      subject: "Pedido de sessão recebido - pendente de pagamento",
       text: bodies.clientText,
       html: bodies.clientHtml,
     });
