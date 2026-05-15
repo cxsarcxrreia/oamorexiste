@@ -6,6 +6,7 @@ import TestimonialsPage from "./pages/TestimonialsPage";
 import AcademyPage from "./pages/AcademyPage";
 import MentorshipPage from "./pages/MentorshipPage";
 import BookMentorPage from "./pages/BookMentorPage";
+import CookieConsentBanner from "./components/CookieConsentBanner";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/selecionar-mentora" element={<BookMentorPage />} />
         <Route path="/book" element={<BookMentorPage />} />
       </Routes>
+      <CookieConsentBanner />
     </BrowserRouter>
   );
 }
