@@ -28,6 +28,9 @@ const realBookingMentors = [
     name: "Teresa Franco",
     category: "Mentoria Administrativa e Financeira",
     calendlyUrl: "https://calendly.com/teresasfranco785/30min",
+    calendlyUrls: {
+      "one-to-one": "https://calendly.com/teresasfranco785/new-meeting",
+    },
     email: "teresa.franco@oamorexiste.com",
   },
   {
@@ -35,6 +38,9 @@ const realBookingMentors = [
     name: "Maria Caeiro",
     category: "Liderança Humanizada e Desenvolvimento de Equipas",
     calendlyUrl: "https://calendly.com/mfcaeiro/30min",
+    calendlyUrls: {
+      "one-to-one": "https://calendly.com/mfcaeiro/new-meeting",
+    },
     email: "maria.caeiro@oamorexiste.com",
   },
   {
@@ -42,6 +48,9 @@ const realBookingMentors = [
     name: "Carla Rosa",
     category: "Estratégia Integrada",
     calendlyUrl: "https://calendly.com/carlamcrrosa/30min",
+    calendlyUrls: {
+      "one-to-one": "https://calendly.com/carlamcrrosa/1h-meeting-carla-rosa",
+    },
     email: "carla.rosa@oamorexiste.com",
   },
 ];

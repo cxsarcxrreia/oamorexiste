@@ -57,6 +57,9 @@ const realBookingMentors = [
     category: "Mentoria Administrativa e Financeira",
     image: teresaFrancoImg,
     calendlyUrl: "https://calendly.com/teresasfranco785/30min",
+    calendlyUrls: {
+      "one-to-one": "https://calendly.com/teresasfranco785/new-meeting",
+    },
     email: "teresa.franco@oamorexiste.com",
   },
   {
@@ -65,6 +68,9 @@ const realBookingMentors = [
     category: "Liderança Humanizada e Desenvolvimento de Equipas",
     image: mariaCaeiroImg,
     calendlyUrl: "https://calendly.com/mfcaeiro/30min",
+    calendlyUrls: {
+      "one-to-one": "https://calendly.com/mfcaeiro/new-meeting",
+    },
     email: "maria.caeiro@oamorexiste.com",
   },
   {
@@ -74,6 +80,9 @@ const realBookingMentors = [
     image: carlaRosaImg,
     imageClassName: "scale-[1.06]",
     calendlyUrl: "https://calendly.com/carlamcrrosa/30min",
+    calendlyUrls: {
+      "one-to-one": "https://calendly.com/carlamcrrosa/1h-meeting-carla-rosa",
+    },
     email: "carla.rosa@oamorexiste.com",
   },
 ];
@@ -127,9 +136,11 @@ export function buildBookingPath({ mentorSlug, planSlug, source } = {}) {
 }
 
 export function buildCalendlyUrl({ mentor, plan, source } = {}) {
-  if (!mentor?.calendlyUrl) return "";
+  const calendlyUrl = mentor?.calendlyUrls?.[plan?.slug] || mentor?.calendlyUrl;
 
-  const url = new URL(mentor.calendlyUrl);
+  if (!calendlyUrl) return "";
+
+  const url = new URL(calendlyUrl);
 
   if (plan?.calendlyAnswerLabel) {
     url.searchParams.set("a1", plan.calendlyAnswerLabel);
